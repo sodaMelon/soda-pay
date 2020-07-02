@@ -1,0 +1,23 @@
+{
+  "name": "soda-pay",
+  "version": "1.0.0",
+  "description": "간편 결제 웹서비스: 소다 페이",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sodaMelon/soda-pay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sodaMelon/soda-pay/issues"
+  },
+  "homepage": "https://github.com/sodaMelon/soda-pay#readme",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1"
+  }
+}
