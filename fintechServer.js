@@ -23,6 +23,7 @@ app.get('/authResult', function(req, res){
     console.log('authResult');
     console.log(req.query);
     var authCode = req.query.code;
+    console.log(authCode);
     var option = {
         method : "POST",
         url : "https://testapi.openbanking.or.kr/oauth/2.0/token",
@@ -39,7 +40,8 @@ app.get('/authResult', function(req, res){
     }
     request(option, function (error, response, body) {
         console.log(body);
-        res.json(body);
+        var requestResultJSON = JSON.parse(body);
+        res.render('resultChild',{data : requestResultJSON})
     });
 })
 
