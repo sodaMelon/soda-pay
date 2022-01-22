@@ -10,10 +10,10 @@ app.get('/', function (req, res) {
 
 app.get('/test', function (req, res) {
     res.render('test');
-}) 
+})
 
 app.get('/test2', function (req, res) {
-    res.send('안녕하세요 테스트2')
-}) 
+    res.render('test2')
+})
 
 app.listen(3000)
