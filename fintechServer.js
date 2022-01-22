@@ -47,6 +47,9 @@ app.get('/qrcode', function(req, res){
     res.render('qrcode')
 })
 
+app.get('/qr', function(req, res){
+    res.render('qrReader')
+})
 app.post('/login', function(req, res){
     console.log(req.body);
     var userEmail = req.body.userEmail;
@@ -65,11 +68,11 @@ app.post('/login', function(req, res){
             if(dbPassword == userPassword){
                 console.log('login 성공!');
                 jwt.sign(
-                    { 
+                    {
                         userId : result[0].id,
                         userName : result[0].name
                     },  //paylaod
-                    'fi&4nt%dnn2nw1ooec@hse#rvice!1234#', 
+                    'fi&4nt%dnn2nw1ooec@hse#rvice!1234#',
                     {
                         expiresIn : '1d',
                         issuer : 'fintech.admin',
@@ -79,7 +82,7 @@ app.post('/login', function(req, res){
                         console.log('우리가 발급한 토큰 : ',token);
                         res.json(token);
                     }
-                );                   
+                );
             }
             else if(dbPassword != userPassword) {
                 res.json('패스워드가 다릅니다');
@@ -125,11 +128,11 @@ app.post('/signup', function(req, res){
     var sql = "INSERT INTO fintech.user"+
     " (name, email, password, accesstoken, refreshtoken, userseqno)"+
     " VALUES (?, ?, ?, ?, ?, ?)"
-    connection.query(sql,[userName, userEmail, userPassword, 
+    connection.query(sql,[userName, userEmail, userPassword,
         userAccessToken, userRefreshToken, userSeqNo], function (error, results, fields) {
         if (error) throw error;
         res.json('가입완료');
-    });     
+    });
 })
 
 app.post('/list', auth, function(req, res){
@@ -196,7 +199,7 @@ app.post('/balance', auth, function(req, res){
             })
         }
     })
-    //database 조회 
+    //database 조회
     // => 잔액조회 requst 요청 코딩
 })
 
