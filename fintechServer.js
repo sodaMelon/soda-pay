@@ -158,10 +158,91 @@ app.post('/balance', auth, function(req, res){
     var finusenum = req.body.fin_use_num;
     var countnum = Math.floor(Math.random() * 1000000000) + 1;
     var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
-
+    var sql = "SELECT * FROM user WHERE id = ?"
+    var userId = req.decoded.userId;
+    connection.query(sql,[userId], function(err , result){
+        if(err){
+            console.error(err);
+            throw err
+        }
+        else {
+            console.log(result);
+            var option = {
+                method : "GET",
+                url : "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num",
+                headers : {
+                    Authorization : 'Bearer ' + result[0].accesstoken
+                },
+                qs : {
+                    bank_tran_id : transId,
+                    fintech_use_num : finusenum,
+                    tran_dtime : '20200615114200'
+                }
+            }
+            request(option, function(err, response, body){
+                if(err){
+                    console.error(err);
+                    throw err;
+                }
+                else {
+                    var accessRequestResult = JSON.parse(body);
+                    console.log(accessRequestResult);
+                    res.json(accessRequestResult)
+                }
+            })
+        }
+    })
     //database 조회 
     // => 잔액조회 requst 요청 코딩
 })
+
+app.post('/transactionlist', auth, function (req, res) {
+    var userId = req.decoded.userId;
+    var fin_use_num = req.body.fin_use_num;
+
+    var countnum = Math.floor(Math.random() * 1000000000) + 1;
+    var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
+
+    var sql = "SELECT * FROM user WHERE id = ?"
+    connection.query(sql,[userId], function(err , result){
+        if(err){
+            console.error(err);
+            throw err
+        }
+        else {
+            console.log(result);
+            var option = {
+                method : "GET",
+                url : "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
+                headers : {
+                    Authorization : 'Bearer ' + result[0].accesstoken
+                },
+                qs : {
+                    bank_tran_id : transId,
+                    fintech_use_num : fin_use_num,
+                    inquiry_type : 'A',
+                    inquiry_base : 'D',
+                    from_date : '20190101',
+                    to_date : '20190101',
+                    sort_order : 'D',
+                    tran_dtime : '20200615134500'
+                }
+            }
+            request(option, function(err, response, body){
+                if(err){
+                    console.error(err);
+                    throw err;
+                }
+                else {
+                    var accessRequestResult = JSON.parse(body);
+                    console.log(accessRequestResult);
+                    res.json(accessRequestResult)
+                }
+            })
+        }
+    })
+})
+
 
 
 app.listen(3000)
