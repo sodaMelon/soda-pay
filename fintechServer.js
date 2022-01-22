@@ -124,6 +124,24 @@ app.post('/signup', function(req, res){
     });     
 })
 
+app.post('/list', function(req, res){
+    var option = {
+        method : "GET",
+        url : "",
+        header : {
+            //ACCESSTOKEN
+        },
+        qs : {
+            // code : authCode,
+        }
+    }
+    request(option, function (error, response, body) {
+        console.log(body);
+        var requestResultJSON = JSON.parse(body);
+        res.json(requestResultJSON)
+    });
+})
+
 app.get('/authTest', auth, function(req, res){
     res.json(req.decoded);
 })
