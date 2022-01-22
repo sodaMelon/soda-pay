@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/skymill2000/200615fintech/issues"
   },
-  "homepage": "https://github.com/skymill2000/200615fintech#readme"
+  "homepage": "https://github.com/skymill2000/200615fintech#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
