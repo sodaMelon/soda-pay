@@ -31,8 +31,8 @@ app.get('/authResult', function(req, res){
         },
         form : {
             code : authCode,
-            client_id : 'q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF',
-            client_secret : 'yVT6irMr2h4ZTHzZY7sDpbvhm1nlOzr4nP7DYRVy',
+            client_id : 'q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF', //key변경
+            client_secret : 'yVT6irMr2h4ZTHzZY7sDpbvhm1nlOzr4nP7DYRVy',//secret변경
             redirect_uri : 'http://localhost:3000/authResult',
             grant_type : 'authorization_code'
         }
