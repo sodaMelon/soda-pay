@@ -36,7 +36,7 @@ app.get('/login', function(req, res){
 })
 
 app.get('/main', function(req, res){
-    
+    res.render('main');
 })
 
 app.post('/login', function(req, res){
