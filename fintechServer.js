@@ -35,6 +35,14 @@ app.get('/login', function(req, res){
 
 app.post('/login', function(req, res){
     console.log(req.body);
+    var userEmail = req.body.userEmail;
+    var userPassword = req.body.userPassword;
+
+    var sql = "SELECT * FROM fintech.user WHERE email = ?"
+    connection.query(sql, [userEmail], function(err, result){
+        if (error) throw error;
+        console.log(result);
+    })
 })
 
 app.get('/authResult', function(req, res){
