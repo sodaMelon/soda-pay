@@ -127,12 +127,12 @@ app.post('/signup', function(req, res){
 app.post('/list', function(req, res){
     var option = {
         method : "GET",
-        url : "",
-        header : {
-            //ACCESSTOKEN
+        url : "https://testapi.openbanking.or.kr/v2.0/user/me",
+        headers : {
+            'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwMDM0NzM2Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MDAxNTQxNzksImp0aSI6IjU4NjBlZTY4LTE2N2QtNDc4YS1hODYxLTdmZjBjMTZhMzM1ZCJ9.wjgJA0k0cp_kEzmMD_mjUZSDSYwlIbo2P0Mr4GDESWs'
         },
         qs : {
-            // code : authCode,
+            user_seq_no : '1100034736'
         }
     }
     request(option, function (error, response, body) {
