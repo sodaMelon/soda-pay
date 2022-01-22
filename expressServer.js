@@ -9,7 +9,11 @@ app.get('/', function (req, res) {
 })
 
 app.get('/test', function (req, res) {
-    res.send('안녕하세요 express 프레임 워크입니다')
+    res.render('test');
+}) 
+
+app.get('/test2', function (req, res) {
+    res.send('안녕하세요 테스트2')
 }) 
 
 app.listen(3000)
