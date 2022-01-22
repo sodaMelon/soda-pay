@@ -154,8 +154,11 @@ app.post('/list', auth, function(req, res){
     })
 })
 
-app.get('/authTest', auth, function(req, res){
-    res.json(req.decoded);
+app.post('/balance', auth, function(req, res){
+    var finusenum = req.body.fin_use_num;
+    //database 조회 
+    // => 잔액조회 requst 요청 코딩
 })
+
 
 app.listen(3000)
