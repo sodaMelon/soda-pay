@@ -52,16 +52,18 @@ app.post('/login', function(req, res){
                 console.log('login 성공!');
                 jwt.sign(
                     { 
-                        foo: 'bar' 
-                    }, 
-                    'fi&nt%dnnnwooec@hse#rvice!1234#', 
+                        userId : result[0].id,
+                        userName : result[0].name
+                    },  //paylaod
+                    'fi&4nt%dnn2nw1ooec@hse#rvice!1234#', 
                     {
-                        expiresIn : '10d',
+                        expiresIn : '1d',
                         issuer : 'fintech.admin',
                         subject : 'user.login.info'
                     },
                     function(err, token) {
                         console.log('우리가 발급한 토큰 : ',token);
+                        res.json(token);
                     }
                 );                   
             }
