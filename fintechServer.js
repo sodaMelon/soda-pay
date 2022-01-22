@@ -131,7 +131,7 @@ app.post('/list', auth, function(req, res){
         if(err) throw err;
         var accesstoken = result[0].accesstoken;
         var userseqno = result[0].userseqno;
-        console.log(accesstoken, userseqno);
+        console.log('db 에서 가져온 값',accesstoken, userseqno);
         var option = {
             method : "GET",
             url : "https://testapi.openbanking.or.kr/v2.0/user/me",
