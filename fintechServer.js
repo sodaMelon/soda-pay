@@ -54,7 +54,7 @@ app.post('/login', function(req, res){
                     { 
                         foo: 'bar' 
                     }, 
-                    'fintechservice!1234#', 
+                    'fi&nt%dnnnwooec@hse#rvice!1234#', 
                     {
                         expiresIn : '10d',
                         issuer : 'fintech.admin',
