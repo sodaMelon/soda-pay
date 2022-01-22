@@ -29,6 +29,14 @@ app.get('/signup', function(req, res){
     res.render('signup')
 })
 
+app.get('/login', function(req, res){
+    res.render('login');
+})
+
+app.post('/login', function(req, res){
+    console.log(req.body);
+})
+
 app.get('/authResult', function(req, res){
     console.log('authResult');
     console.log(req.query);
@@ -70,9 +78,7 @@ app.post('/signup', function(req, res){
         userAccessToken, userRefreshToken, userSeqNo], function (error, results, fields) {
         if (error) throw error;
         res.json('가입완료');
-    });
-      
-
+    });     
 })
 
 app.listen(3000)
