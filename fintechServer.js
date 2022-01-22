@@ -3,6 +3,7 @@ const app = express()
 const path = require('path');
 const request = require('request');
 const jwt = require('jsonwebtoken')
+const auth = require('./lib/auth');
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -116,6 +117,10 @@ app.post('/signup', function(req, res){
         if (error) throw error;
         res.json('가입완료');
     });     
+})
+
+app.get('/authTest',auth, function(req, res){
+    res.json('사용자 인증에 성공 하였습니다.')
 })
 
 app.listen(3000)
