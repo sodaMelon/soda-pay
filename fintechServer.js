@@ -39,6 +39,10 @@ app.get('/main', function(req, res){
     res.render('main');
 })
 
+app.get('/balance', function(req, res){
+    res.render('balance');
+})
+
 app.post('/login', function(req, res){
     console.log(req.body);
     var userEmail = req.body.userEmail;
