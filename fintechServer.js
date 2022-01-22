@@ -45,4 +45,14 @@ app.get('/authResult', function(req, res){
     });
 })
 
+app.post('/signup', function(req, res){
+    var userName = req.body.userName;
+    var userEmail = req.body.userEmail;
+    var userPassword = req.body.userPassword;
+    var userAccessToken = req.body.userAccessToken;
+    var userRefreshToken = req.body.userRefreshToken;
+    var userSeqNo = req.body.userSeqNo;
+    console.log(userAccessToken, userRefreshToken, userSeqNo)
+})
+
 app.listen(3000)

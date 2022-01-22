@@ -184,6 +184,31 @@
             "client_id=q7kH44ThJwjpvNRg0BbJvE1yxvx5X53DKz1rNgPF"+//key변경
             "&redirect_uri=http://localhost:3000/authResult&scope=login inquiry transfer&state=12345678901234567890123456789012&auth_type=0"
         })
+        $("#signupBtn").click(function(){
+            var userName = $("#userName").val();
+            var userEmail = $("#userEmail").val();
+            var userPassword = $("#userPassword").val();
+            var userAccessToken = $("#userAccessToken").val();
+            var userRefreshToken = $("#userRefreshToken").val();
+            var userSeqNo = $("#userSeqNo").val();
+
+            $.ajax({
+            url:'/signup',
+            type : 'POST',
+            data : {
+                userName : userName,
+                userEmail : userEmail,
+                userPassword : userPassword,
+                userAccessToken : userAccessToken,
+                userRefreshToken : userRefreshToken,
+                userSeqNo : userSeqNo
+            },
+            success:function(data){
+                alert(data);
+            }
+        })
+
+        })
     </script>
 	
 </body>
