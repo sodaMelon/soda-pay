@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path');
 const request = require('request');
+const jwt = require('jsonwebtoken')
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -38,10 +39,36 @@ app.post('/login', function(req, res){
     var userEmail = req.body.userEmail;
     var userPassword = req.body.userPassword;
 
-    var sql = "SELECT * FROM fintech.user WHERE email = ?"
-    connection.query(sql, [userEmail], function(err, result){
+    var sql = "SELECT * FROM fintech.user WHERE email = ?";
+    connection.query(sql, [userEmail], function(error, result){
         if (error) throw error;
-        console.log(result);
+        if(result.length == 0){
+            res.json('사용자가 없습니다.')
+        }
+        else {
+            var dbPassword = result[0].password;
+            console.log('database password : ', dbPassword);
+            if(dbPassword == userPassword){
+                console.log('login 성공!');
+                jwt.sign(
+                    { 
+                        foo: 'bar' 
+                    }, 
+                    'fintechservice!1234#', 
+                    {
+                        expiresIn : '10d',
+                        issuer : 'fintech.admin',
+                        subject : 'user.login.info'
+                    },
+                    function(err, token) {
+                        console.log('우리가 발급한 토큰 : ',token);
+                    }
+                );                   
+            }
+            else if(dbPassword != userPassword) {
+                res.json('패스워드가 다릅니다');
+            }
+        }
     })
 })
 
