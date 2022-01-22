@@ -35,6 +35,10 @@ app.get('/login', function(req, res){
     res.render('login');
 })
 
+app.get('/main', function(req, res){
+    
+})
+
 app.post('/login', function(req, res){
     console.log(req.body);
     var userEmail = req.body.userEmail;
