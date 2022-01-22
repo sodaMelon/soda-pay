@@ -43,6 +43,10 @@ app.get('/balance', function(req, res){
     res.render('balance');
 })
 
+app.get('/qrcode', function(req, res){
+    res.render('qrcode')
+})
+
 app.post('/login', function(req, res){
     console.log(req.body);
     var userEmail = req.body.userEmail;
