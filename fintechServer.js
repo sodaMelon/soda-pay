@@ -47,6 +47,7 @@ app.post('/login', function(req, res){
             res.json('사용자가 없습니다.')
         }
         else {
+            console.log(result[0].accesstoken);
             var dbPassword = result[0].password;
             console.log('database password : ', dbPassword);
             if(dbPassword == userPassword){
@@ -119,8 +120,8 @@ app.post('/signup', function(req, res){
     });     
 })
 
-app.get('/authTest',auth, function(req, res){
-    res.json('사용자 인증에 성공 하였습니다.')
+app.get('/authTest', auth, function(req, res){
+    res.json(req.decoded);
 })
 
 app.listen(3000)
