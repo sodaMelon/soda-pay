@@ -4,6 +4,9 @@ const app = express()
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
 app.get('/', function (req, res) {
     res.send('Hello World')
 })
@@ -18,6 +21,17 @@ app.get('/test2', function (req, res) {
 
 app.get('/inputTest', function(req, res){
     res.render('inputTest');
+})
+
+app.post('/inputTest', function(req, res){
+    console.log('request!!');
+    console.log(req.body.userIdBody);
+    console.log(req.body.userPasswordBody);
+    res.json(1);
+})
+
+app.post('/postTest', function(req, res){
+    res.send('Post !!!!!');
 })
 
 app.listen(3000)
