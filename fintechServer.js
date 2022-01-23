@@ -4,12 +4,13 @@ const path = require('path');
 const request = require('request');
 const jwt = require('jsonwebtoken')
 const auth = require('./lib/auth');
+const dbInfo = require('./database.json');
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : 'root',
+  user     : dbInfo.id,
+  password : dbInfo.password,
   database : 'fintech'
 });
 
